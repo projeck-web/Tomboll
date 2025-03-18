@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main js</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #9b5de1, #1a0331);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .button-container {
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+        button {
+            background-color: rgb(101, 209, 209);
+            border-radius: 8px;
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #movingButton {
+            position: relative;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #b086e0, #2a094c);
+            padding: 75px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>APAKAH KAMU EL RODOKKK</h1>
+    <br><br><br>
+    <div class="button-container">
+        <button id="normalButton">IYA </button>
+        <button id="movingButton">TIDAK</button>
+    </div>
+    
+    <div id="popup" class="popup">
+        <p>IHH TAKUTNYEE!!!</p>
+        <button onclick="closePopup()">Tutup</button>
+    </div>
+
+    <script>
+        const movingButton = document.getElementById("movingButton");
+        const normalButton = document.getElementById("normalButton");
+        const popup = document.getElementById("popup");
+
+        normalButton.addEventListener("click", function() {
+            popup.style.display = "block";
+        });
+
+        function closePopup() {
+            popup.style.display = "none";
+        }
+
+        movingButton.addEventListener("mouseover", function() {
+            const x = Math.random() * (window.innerWidth - movingButton.clientWidth);
+            const y = Math.random() * (window.innerHeight - movingButton.clientHeight);
+            movingButton.style.position = "absolute";
+            movingButton.style.left = `${x}px`;
+            movingButton.style.top = `${y}px`;
+        });
+    </script>
+</body>
+</html>
